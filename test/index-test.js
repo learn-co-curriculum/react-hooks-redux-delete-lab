@@ -13,9 +13,13 @@ import Band from '../src/components/Band'
 describe('Bands Component', () => {
   it('displays a list of band components', () => {
     const store = createStore(manageBand)
-    sinon.stub(store, 'getState').returns({bands: [{id: 1, text: 'hello'},
-      {id: 2, text: 'goodbye'}, {id: 3, text: 'ciao'}
-      ]});
+    sinon.stub(store, 'getState').returns({
+      bands: [
+        { id: 1, text: 'hello' },
+        { id: 2, text: 'goodbye' }, 
+        { id: 3, text: 'ciao' }
+      ]
+    });
     const wrapper = shallow(<Bands store={store}/>)
     expect(wrapper.find(Band)).to.have.length(3);
   });
@@ -23,12 +27,14 @@ describe('Bands Component', () => {
 
 describe('Band Component', () => {
   it('displays the appropriate text', () => {
-    const wrapper = shallow(<Band text='hello'/>)
+    const band = { id: 1, text: 'hello' };
+    const wrapper = shallow(<Band band={band} />)
     expect(wrapper.text()).to.contain('hello');
   });
 
   it('renders an li', () => {
-    const wrapper = shallow(<Band text='hello'/>)
+    const band = { id: 1, text: 'hello' };
+    const wrapper = shallow(<Band band={band} />)
     expect(wrapper.find('li')).to.have.length(1)
   });
 });
