@@ -12,7 +12,7 @@ We are starting off with our work from the previous lab, a React/Redux app that 
 
 ## Instructions
 
-1. You'll first need to create a new `Band` component that is in charge of displaying the information for a single band. That `Band` component will be rendered from the `Bands` component.  
+1. You'll first need to create a new `Band` component that is in charge of displaying the information for a single band. That `Band` component will be rendered from the `Bands` component, and should be passed a `band={band}` as props.  
 
 2. You will need to change the structure of the state such that each band has its own id. You will also need to pass through an id as one of the props to each rendered `Band` component.  
 
