@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import BandInput from './components/BandInput''
-import Bands from './components/Bands''
+import BandInput from './components/BandInput';
+import Bands from './components/Bands';
 
 export class App extends Component {
   render() {
