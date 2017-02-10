@@ -59,7 +59,7 @@ describe('Redux', () => {
 });
 
 describe('Band Component with Redux', () => {
-  it('has the id as a property of the component', () => {
+  it('has the band as props', () => {
     const store = createStore(manageBand);
     sinon.stub(store, 'getState').returns({
       bands: [
@@ -69,12 +69,13 @@ describe('Band Component with Redux', () => {
       ]
     });
     const wrapper = shallow(<Bands store={store} />);
-    expect(wrapper.find({id: 1})).to.have.length(1);
+    expect(wrapper.find({ band: { id: 1, text: 'hello' } })).to.have.length(1);
   });
 
   it('has a button that dispatches an DELETE_BAND action when clicked', ()=> {
     const store = createStore(manageBand);
-    const wrapper = shallow(<Band store={store} id={1} text={'hello'} />);
+    const band = { id: 1, text: 'hello' };
+    const wrapper = shallow(<Band store={store} band={band} />);
     let deleteButton = wrapper.find('button').first();
     let stub = sinon.stub(store, "dispatch");
     deleteButton.simulate('click',  { preventDefault() {} });
@@ -83,7 +84,8 @@ describe('Band Component with Redux', () => {
 
   it('has a button that dispatches an DELETE_BAND action with the proper id when clicked', ()=> {
     const store = createStore(manageBand);
-    const wrapper = shallow(<Band store={store} id={1} text={'hello'} />);
+    const band = { id: 1, text: 'hello' };
+    const wrapper = shallow(<Band store={store} band={band} />);
     let deleteButton = wrapper.find('button').first();
     let stub = sinon.stub(store, "dispatch");
     deleteButton.simulate('click',  { preventDefault() {} });
@@ -93,17 +95,16 @@ describe('Band Component with Redux', () => {
   it('updates the state of the store to remove the component', () => {
     const store = createStore(manageBand);
     const wrapper = mount(<BandInput store={store} />);
-
     let form = wrapper.find('form');
     let input = wrapper.find('input').first();
     input.simulate('change', { target: { value: 'Hello' } });
     form.simulate('submit',  { preventDefault() {} });
     input.simulate('change', { target: { value: 'ciao' } });
     form.simulate('submit',  { preventDefault() {} });
-    let secondBand = store.getState().bands[1];
-    const BandComponent = shallow(<Band store={store} id={secondBand.id} text={secondBand.text}/>);
+    let band = store.getState().bands[1];
+    const BandComponent = shallow(<Band store={store} band={band} />);
     let deleteButton = BandComponent.find('button').first();
-    deleteButton.simulate('click');
+    deleteButton.simulate('click', { preventDefault() {} });
     expect(store.getState().bands.length).to.equal(1);
     expect(store.getState().bands[0].text).to.equal('Hello');
   });
