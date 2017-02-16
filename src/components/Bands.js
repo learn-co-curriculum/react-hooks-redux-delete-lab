@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Bands extends Component {
-  render(){
+  render() {
     return(
       <ul>
         Bands Component
       </ul>
-    )
+    );
   }
-}
+};
 
 export default Bands;
