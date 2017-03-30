@@ -21,3 +21,4 @@ We are starting off with our work from the previous lab, a React/Redux app that 
 4. You will have to alter the reducer such that it creates a new list of bands that does not include the one whose delete button was pressed.
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/redux-delete-lab'>Redux Delete Lab</a> on Learn.co and start learning to code for free.</p>
+
