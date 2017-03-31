@@ -72,7 +72,7 @@ describe('Band Component with Redux', () => {
     expect(wrapper.find({ band: { id: 1, text: 'hello' } })).to.have.length(1);
   });
 
-  it('has a button that dispatches an DELETE_BAND action when clicked', ()=> {
+  it('has a button that dispatches a DELETE_BAND action when clicked', ()=> {
     const store = createStore(manageBand);
     const band = { id: 1, text: 'hello' };
     const wrapper = shallow(<Band store={store} band={band} />);
@@ -82,7 +82,7 @@ describe('Band Component with Redux', () => {
     expect(stub.calledWith(sinon.match({ type: 'DELETE_BAND' }))).to.equal(true);
   });
 
-  it('has a button that dispatches an DELETE_BAND action with the proper id when clicked', ()=> {
+  it('has a button that dispatches a DELETE_BAND action with the proper id when clicked', ()=> {
     const store = createStore(manageBand);
     const band = { id: 1, text: 'hello' };
     const wrapper = shallow(<Band store={store} band={band} />);
