@@ -12,13 +12,24 @@ We are starting off with our work from the previous lab, a React/Redux app that 
 
 ## Instructions
 
-1. You'll first need to create a new `Band` component that is in charge of displaying the information for a single band. That `Band` component will be rendered from the `Bands` component, and should be passed a `band={band}` as props.  
+The BandInput component is already set up for you and BandsContainer is
+partially working, but take a moment to note the flow of information. The
+BandsContainer is connected to __Redux__ and has mapped `name => dispatch({ type:
+"ADD_BAND", name })` to props.
 
-2. You will need to change the structure of the state such that each band has its own id. You will also need to pass through the band object(this should include the id and text of the band) along with the `store`(for dispatching our `DELETE_BAND` action) as the props to each rendered `Band` component.  
+1. Set up the new Band component that is in charge of displaying the information
+for a single band.
 
-3. In the `Band` component, you will need to add a button that dispatches an action of type `'DELETE_BAND'` and then passes through that band's id as the `action.id`.
+2. Change the structure of the state such that each band has its own id. You
+will also need to pass through the band object(this should include the _id_ and
+_name_ of the band) as the props to each rendered `Band` component.
 
-4. You will have to alter the reducer such that it creates a new list of bands that does not include the one whose delete button was pressed.
+3. In the `Band` component, you will need to add a button that dispatches an
+action of type `'DELETE_BAND'` and then passes through that band's id as the
+`action.id`. This dispatched action should be provided as a prop from
+BandsContainer.
+
+4. You will have to alter the reducer such that it creates a new list of bands
+that does not include the one whose delete button was pressed.
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/redux-delete-lab'>Redux Delete Lab</a> on Learn.co and start learning to code for free.</p>
-
