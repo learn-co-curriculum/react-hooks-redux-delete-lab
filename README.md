@@ -21,7 +21,7 @@ BandsContainer is connected to __Redux__ and has mapped `name => dispatch({ type
 for a single band.
 
 2. Change the structure of the state such that each band has its own id. You
-will also need to pass through the band object(this should include the _id_ and
+will also need to pass through the band object (this should include the _id_ and
 _name_ of the band) as the props to each rendered `Band` component.
 
 3. In the `Band` component, you will need to add a button that dispatches an
