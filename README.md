@@ -1,4 +1,4 @@
-# Set List Lab
+# Set List Lab - Redux Delete
 
 ## Objectives
 
