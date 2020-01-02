@@ -6,9 +6,12 @@
 
 ## Overview
 
-Well all things change, and sometimes that means that even our favorite bands breakup and we must remove all evidence of them. We want an application that allows us to remove specific bands, and have those changes reflected in our store's state, and on the page.  
+Well all things change, and sometimes that means that even our favorite bands breakup and
+we must remove all evidence of them. We want an application that allows us to remove
+specific bands, and have those changes reflected in our store's state, and on the page.  
 
-We are starting off with our work from the previous lab, a React/Redux app that creates new band elements and displays them below. Your task will be to add the deleting a band functionality.
+We are starting off with our work from the previous lab, a React/Redux app that creates new
+band elements and displays them below. Your task will be to add the deleting a band functionality.
 
 ## Instructions
 
@@ -17,13 +20,18 @@ partially working, but take a moment to note the flow of information. The
 BandsContainer is connected to __Redux__ and has mapped `name => dispatch({ type:
 "ADD_BAND", name })` to props.
 
-1. Set up the new Band component that is in charge of displaying the information
+1. Set up the new `Band` component that is in charge of displaying the information
 for a single band.
 
-2. Change the structure of the state such that each band has its own id. You
-will also need to pass through the band object (this should include the _id_ and
-_name_ of the band) as the props to each rendered `Band` component. The `Band` component
-should be used to render multiple bands, one for each component rendered, using theses props.
+2. Create a new `Bands` component that will handle rendering all `Band` components from
+a list of bands provided as props.
+
+3. Use `BandsContainer` to access the Redux store that contains any band information using
+the provided `mapStateToProps` method. Pass these bands into the `BandsContainer`.
+
+2. In the `manageBand` reducer, change the structure of the state such that each band is assigned its own ID. You
+will also need to pass this info through to the band object (this should include the _id_ and
+_name_ of the band) as the props to each rendered `Band` component.
 
 3. In the `Band` component, you will need to add a button that dispatches an
 action of type `'DELETE_BAND'` and then passes through that band's id as the
