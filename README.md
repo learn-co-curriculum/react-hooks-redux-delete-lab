@@ -23,22 +23,22 @@ BandsContainer is connected to __Redux__ and has mapped `name => dispatch({ type
 1. Set up the new `Band` component that is in charge of displaying the information
 for a single band.
 
-2. Create a new `Bands` component that will handle rendering all `Band` components from
-a list of bands provided as props.
+2. Create a new `Bands` component. This component will handle the rendering of all `Band` 
+components from a list of bands provided as props.
 
 3. Use `BandsContainer` to access the Redux store that contains any band information using
-the provided `mapStateToProps` method. Pass these bands into the `BandsContainer`.
+the provided `mapStateToProps` method. Pass these bands into the `Bands` component.
 
-2. In the `manageBand` reducer, change the structure of the state such that each band is assigned its own ID. You
+4. In the `manageBand` reducer, change the structure of the state such that each band is assigned its own ID. You
 will also need to pass this info through to the band object (this should include the _id_ and
 _name_ of the band) as the props to each rendered `Band` component.
 
-3. In the `Band` component, you will need to add a button that dispatches an
+5. In the `Band` component, you will need to add a button that dispatches an
 action of type `'DELETE_BAND'` and then passes through that band's id as the
 `action.id`. This dispatched action should be provided as a prop from
 BandsContainer.
 
-4. You will have to alter the reducer such that it creates a new list of bands
+6. You will have to alter the reducer such that it creates a new list of bands
 that does not include the one whose delete button was pressed.
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/redux-delete-lab'>Redux Delete Lab</a> on Learn.co and start learning to code for free.</p>
