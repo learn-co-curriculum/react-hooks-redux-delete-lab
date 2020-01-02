@@ -22,7 +22,8 @@ for a single band.
 
 2. Change the structure of the state such that each band has its own id. You
 will also need to pass through the band object (this should include the _id_ and
-_name_ of the band) as the props to each rendered `Band` component.
+_name_ of the band) as the props to each rendered `Band` component. The `Band` component
+should be used to render multiple bands, one for each component rendered, using theses props.
 
 3. In the `Band` component, you will need to add a button that dispatches an
 action of type `'DELETE_BAND'` and then passes through that band's id as the
