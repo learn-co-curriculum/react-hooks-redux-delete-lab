@@ -40,3 +40,4 @@ BandsContainer.
 
 6. You will have to alter the reducer such that it creates a new list of bands
 that does not include the one whose delete button was pressed.
+
