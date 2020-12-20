@@ -1,0 +1,104 @@
+import bandsReducer, {
+  bandAdded,
+  bandRemoved,
+} from "../features/bands/bandsSlice";
+
+describe("actions", () => {
+  test("bandAdded returns an action with a type of 'bands/bandAdded' and a payload of the new band name", () => {
+    expect(bandAdded("test")).toEqual({
+      type: "bands/bandAdded",
+      payload: "test",
+    });
+  });
+
+  test("bandRemoved returns an action with a type of 'bands/bandRemoved' and a payload of the ID", () => {
+    expect(bandRemoved(1)).toEqual({
+      type: "bands/bandRemoved",
+      payload: 1,
+    });
+  });
+});
+
+describe("reducer", () => {
+  test("returns the correct initial state", () => {
+    expect(bandsReducer(undefined, {})).toEqual({ entities: [] });
+  });
+
+  test("handles 'bands/bandAdded'", () => {
+    expect(
+      bandsReducer(
+        { entities: [] },
+        {
+          type: "bands/bandAdded",
+          payload: "test",
+        }
+      )
+    ).toEqual({
+      entities: expect.arrayContaining([
+        expect.objectContaining({
+          name: "test",
+          id: expect.any(String),
+        }),
+      ]),
+    });
+
+    expect(
+      bandsReducer(
+        {
+          entities: ["test"],
+        },
+        {
+          type: "bands/bandAdded",
+          payload: "test 2",
+        }
+      )
+    ).toEqual({
+      entities: expect.arrayContaining([
+        expect.objectContaining({
+          name: "test",
+          id: expect.any(String),
+        }),
+        expect.objectContaining({
+          name: "test 2",
+          id: expect.any(String),
+        }),
+      ]),
+    });
+  });
+
+  test("handles 'bands/bandRemoved'", () => {
+    expect(
+      bandsReducer(
+        {
+          entities: [
+            { id: 1, name: "test" },
+            { id: 2, name: "test 2" },
+          ],
+        },
+        {
+          type: "bands/bandRemoved",
+          payload: 2,
+        }
+      )
+    ).toEqual({
+      entities: expect.arrayContaining([
+        expect.objectContaining({
+          name: "test",
+          id: expect.any(String),
+        }),
+      ]),
+    });
+
+    expect(
+      bandsReducer(
+        { entities: [] },
+        {
+          type: "bands/bandRemoved",
+          payload: 1,
+        }
+      )
+    ).toEqual({
+      entities: [],
+    });
+  });
+});

@@ -1,16 +1,12 @@
-import React, { Component } from 'react';
-import BandsContainer from './components/BandsContainer'
+import React from "react";
+import BandsContainer from "./features/bands/BandsContainer";
 
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <BandsContainer />
-
-      </div>
-    );
-  }
-};
+function App() {
+  return (
+    <div>
+      <BandsContainer />
+    </div>
+  );
+}
 
 export default App;
