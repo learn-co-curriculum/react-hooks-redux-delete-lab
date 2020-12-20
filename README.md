@@ -32,9 +32,11 @@ how it is communicating with the Redux store.
    being returned by the Redux store.
 
 3. In the `bandsSlice` reducer, change the structure of the state such that each
-   band is assigned its own ID. You will also need to pass this info through to
-   the band object (this should include the _id_ and _name_ of the band) as the
-   props to each rendered `Band` component.
+   band is assigned its own ID. The
+   [`uuid` package](https://www.npmjs.com/package/uuid) is installed if you
+   would like to use that to generate IDs. You will also need to pass this info
+   through to the band object (this should include the _id_ and _name_ of the
+   band) as the props to each rendered `Band` component.
 
 4. Add a new action to the `bandsSlice` reducer for deleting a band called
    `bandRemoved`. This action should remove the band from the store, using the

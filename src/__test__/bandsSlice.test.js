@@ -25,18 +25,10 @@ describe("reducer", () => {
   });
 
   test("handles 'bands/bandAdded'", () => {
-    expect(
-      bandsReducer(
-        { entities: [] },
-        {
-          type: "bands/bandAdded",
-          payload: "test",
-        }
-      )
-    ).toEqual({
+    expect(bandsReducer({ entities: [] }, bandAdded("test 1"))).toEqual({
       entities: expect.arrayContaining([
         expect.objectContaining({
-          name: "test",
+          name: "test 1",
           id: expect.any(String),
         }),
       ]),
@@ -45,17 +37,14 @@ describe("reducer", () => {
     expect(
       bandsReducer(
         {
-          entities: ["test"],
+          entities: [{ id: "1", name: "test 1" }],
         },
-        {
-          type: "bands/bandAdded",
-          payload: "test 2",
-        }
+        bandAdded("test 2")
       )
     ).toEqual({
       entities: expect.arrayContaining([
         expect.objectContaining({
-          name: "test",
+          name: "test 1",
           id: expect.any(String),
         }),
         expect.objectContaining({
@@ -71,13 +60,13 @@ describe("reducer", () => {
       bandsReducer(
         {
           entities: [
-            { id: 1, name: "test" },
-            { id: 2, name: "test 2" },
+            { id: "1", name: "test" },
+            { id: "2", name: "test 2" },
           ],
         },
         {
           type: "bands/bandRemoved",
-          payload: 2,
+          payload: "2",
         }
       )
     ).toEqual({
@@ -94,7 +83,7 @@ describe("reducer", () => {
         { entities: [] },
         {
           type: "bands/bandRemoved",
-          payload: 1,
+          payload: "1",
         }
       )
     ).toEqual({
