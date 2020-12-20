@@ -12,9 +12,9 @@ describe("actions", () => {
   });
 
   test("bandRemoved returns an action with a type of 'bands/bandRemoved' and a payload of the ID", () => {
-    expect(bandRemoved(1)).toEqual({
+    expect(bandRemoved("1")).toEqual({
       type: "bands/bandRemoved",
-      payload: 1,
+      payload: "1",
     });
   });
 });
@@ -64,29 +64,13 @@ describe("reducer", () => {
             { id: "2", name: "test 2" },
           ],
         },
-        {
-          type: "bands/bandRemoved",
-          payload: "2",
-        }
+        bandRemoved("2")
       )
     ).toEqual({
-      entities: expect.arrayContaining([
-        expect.objectContaining({
-          name: "test",
-          id: expect.any(String),
-        }),
-      ]),
+      entities: [{ id: "1", name: "test" }],
     });
 
-    expect(
-      bandsReducer(
-        { entities: [] },
-        {
-          type: "bands/bandRemoved",
-          payload: "1",
-        }
-      )
-    ).toEqual({
+    expect(bandsReducer({ entities: [] }, bandRemoved("1"))).toEqual({
       entities: [],
     });
   });
