@@ -1,9 +1,8 @@
 # Set List Lab - Redux Delete
 
-## Objectives
+## Learning Goals
 
-1. Implement a delete button for each band, such that the store is appropriately
-   updated.
+- Delete items from the Redux store
 
 ## Overview
 
